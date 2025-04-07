@@ -12,11 +12,10 @@
 
 class Game{
 public:
-    
-    int getInteger(std::string prompt);
     bool run();
     
 private:
+    int getInteger(std::string prompt);
     int num;
 };
 
