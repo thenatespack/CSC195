@@ -14,7 +14,7 @@ class Game{
 public:
     
     int getInteger(std::string prompt);
-    void run();
+    bool run();
     
 private:
     int num;

@@ -15,26 +15,40 @@ int Game::getInteger(std::string prompt){
     std::cin >> num;
     return num;
 }
-void Game::run(){
+bool Game::run(){
     int range = getInteger("Enter Range: ");
     num = rand() % range +1;
+    bool guessed=false;
+    std::cout << "Number is: ";
     std::cout << num << std::endl;
     for (int i=0; i < 3; i++) {
         //guess number
         int guess = getInteger("Enter Guess: ");
         if (guess==num) {
             std::cout << "You Got good job " << std::endl;
-            return;
+            guessed=true;
+            break;
         }
-        if (guess>num) {
+        else if (guess>num) {
             std::cout << "You Didn't Get it, Try Guessing Lower " << std::endl;
         }
-        if (guess<num) {
+        else if (guess<num) {
             std::cout << "You Didn't Get it, Try Guessing Higher"  << std::endl;
         }
     }
-    std::cout << "You Didn't Guess it correctly The Number was ";
-    std::cout << num << std::endl;
+    if(guessed==false){
+        std::cout << "You Didn't Guess it correctly The Number was ";
+        std::cout << num << std::endl;
+    }
+    std::cout << "Play Again?(y/n):";
+    std::string choice;
+    std::cin >> choice;
+    std::cout << choice << std::endl;
+    if(choice.at(0)=='y'){
+        return true;
+    }
+    return false;
+    
     
     
     
