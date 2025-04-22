@@ -7,7 +7,8 @@
 class GameConsole : public Electronic {
 public:
     void Read(std::ostream& ostream, std::istream& istream) override{
-        Electronic::Read(ostream, istream);
+        ostream << "Enter Name: ";
+        istream >> name;
         ostream << "Enter controller type: ";
         istream >> controllerType;
     }

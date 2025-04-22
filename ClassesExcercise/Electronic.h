@@ -8,18 +8,23 @@
 #include <iostream>
 #include <string>
 #include <vector>
-
 class Electronic {
 public:
     enum class eType { PHONE, GAMECONSOLE };
-    
+
     Electronic() = default;
     virtual ~Electronic() = default;
-    
-    virtual void Read(std::ostream& ostream, std::istream& istream);
-    virtual void Write(std::ostream& ostream);
+
+    virtual void Read(std::ostream& ostream, std::istream& istream) {
+        // Default implementation
+        ostream << "Reading Electronic data...\n";
+    }
+    virtual void Write(std::ostream& ostream) {
+        // Default implementation
+        ostream << "Writing Electronic data...\n";
+    }
     virtual eType GetType() = 0;
-    
+
     std::string GetName() const { return name; }
 
 protected:

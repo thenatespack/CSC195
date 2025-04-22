@@ -4,6 +4,7 @@
 //
 //  Created by Nathan Spackman on 4/21/25.
 //
+#pragma once
 #include "Phone.h"
 #include "GameConsole.h"
 
