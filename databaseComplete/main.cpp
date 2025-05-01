@@ -6,9 +6,12 @@
 //
 #include <iostream>
 #include "Database.h"
+#define _CRTDBG_MAP_ALLOC
+#include <stdlib.h>
+//#include <crtdbg.h>
 
 int main() {
-    Database database;
+    Database* database= new Database();
     bool quit = false;
 
     while (!quit) {
@@ -32,17 +35,17 @@ int main() {
                     break;
                 }
                 Electronic::eType t = (type == 0) ? Electronic::eType::PHONE : Electronic::eType::GAMECONSOLE;
-                database.Create(t);
+                database->Create(t);
                 break;
             }
             case 2:
-                database.DisplayAll();
+                database->DisplayAll();
                 break;
             case 3: {
                 std::string name;
                 std::cout << "Enter name: ";
                 std::cin >> name;
-                database.Display(name);
+                database->Display(name);
                 break;
             }
             case 4: {
@@ -54,7 +57,7 @@ int main() {
                     break;
                 }
                 Electronic::eType t = (type == 0) ? Electronic::eType::PHONE : Electronic::eType::GAMECONSOLE;
-                database.Display(t);
+                database->Display(t);
                 break;
             }
             case 5: {
@@ -62,7 +65,7 @@ int main() {
                 std::cout << "Enter filename to save: ";
                 std::cin >> filename;
                 try {
-                    database.Save(filename);
+                    database->Save(filename);
                     std::cout << "Saved to " << filename << "\n";
                 } catch (const std::exception& e) {
                     std::cout << "Error: " << e.what() << "\n";
@@ -74,7 +77,7 @@ int main() {
                 std::cout << "Enter filename to load: ";
                 std::cin >> filename;
                 try {
-                    database.Load(filename);
+                    database->Load(filename);
                     std::cout << "Loaded from " << filename << "\n";
                 } catch (const std::exception& e) {
                     std::cout << "Error: " << e.what() << "\n";
@@ -89,5 +92,9 @@ int main() {
                 break;
         }
     }
+
+
+    delete database;
+    //_CrtDumpMemoryLeaks();
     return 0;
 }
