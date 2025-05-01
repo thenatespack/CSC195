@@ -1,16 +1,15 @@
 //
-//  GameConsole.h
+//  Phone.h
 //  CSC195
 //
 //  Created by Nathan Spackman on 4/21/25.
-//
-#pragma once
+//#pragma once
 #include "Electronic.h"
 
-class GameConsole : public Electronic {
+class Phone : public Electronic {
 public:
     void Read(std::ostream& ostream, std::istream& istream) override;
-    void Write(std::ostream& ostream) override;
+    void Write(std::ostream& ostream) const override;
     std::istream& readFromFile(std::istream& istream) override {
         Electronic::readFromFile(istream);
         istream >> storage;
@@ -22,8 +21,8 @@ public:
         ostream << " " << storage;
         return ostream;
     }
-    eType GetType() override { return eType::GAMECONSOLE; }
+    eType GetType() override { return eType::PHONE; }
 
 private:
-    std::string controllerType;
+    int storage = 0;
 };

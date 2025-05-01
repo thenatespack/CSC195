@@ -36,7 +36,7 @@ public:
         denominator /= gcd;
     }
     
-    double ToFloat() const {
+    float ToFloat() const {
             return static_cast<float>(numerator) / static_cast<float>(denominator);
     }
     

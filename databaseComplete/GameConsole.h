@@ -10,16 +10,16 @@
 class GameConsole : public Electronic {
 public:
     void Read(std::ostream& ostream, std::istream& istream) override;
-    void Write(std::ostream& ostream) override;
+    void Write(std::ostream& ostream) const override;
     std::istream& readFromFile(std::istream& istream) override {
         Electronic::readFromFile(istream);
-        istream >> storage;
+        istream >> controllerType;
         return istream;
     }
     std::ostream& writeToFile(std::ostream& ostream) const override {
-        ostream << "PHONE ";
+        ostream << "GAMECONSOLE ";
         Electronic::writeToFile(ostream);
-        ostream << " " << storage;
+        ostream << " " << controllerType;
         return ostream;
     }
     eType GetType() override { return eType::GAMECONSOLE; }

@@ -12,7 +12,7 @@ using namespace mathlib;
 
 int main()
 {
-    Fraction fraction1{ 15, 5 };
+    Fraction fraction1{ 10, 5 };
     std::cout << fraction1 << std::endl;
 
     Fraction fraction2{ 15, 6 };
